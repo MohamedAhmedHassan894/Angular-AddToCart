@@ -1,0 +1,11 @@
+<p *ngIf="cItems.length === 0" class="alert alert-info">"You didn't add orders yet"</p>
+
+<div style="color: turquoise;margin: 10px;" *ngIf="cItems.length > 0">
+    <div *ngFor="let item of cItems" class="cart-item mb-2">
+        <app-cart-item [item]="item"></app-cart-item>
+    </div>
+</div>
+<div *ngIf="cItems.length > 0" class="dropdown-divider"></div>
+<p *ngIf="cItems.length > 0" class="alert alert-dark" style="color: tomato;">Total Price is : {{ cartTotal | currency:'$'}}</p>
+<div *ngIf="cItems.length > 0" class="dropdown-divider"></div>
+<a *ngIf="cItems.length > 0" class="dropdown-item bg-primary checkout-button" [routerLink]="['/checkout']">Checkout</a>

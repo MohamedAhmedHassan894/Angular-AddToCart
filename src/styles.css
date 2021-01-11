@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+.dropdown-menu {
+  padding: 10px;
+}
+
+.top-cart-image {
+  width: 20px;
+}
+
+.checkout-button {
+  color: white;
+}

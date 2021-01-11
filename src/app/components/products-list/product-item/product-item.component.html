@@ -1,0 +1,16 @@
+<div class="card mb-4 shadow-sm" style="background-color: rgba(153, 205, 50, 0.39); color: darkblue;">
+    <img class="card-img-top" src="{{ product.image }}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.description | slice: 0:40 }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <a [routerLink]="['/products' , product.id]" class="btn btn-sm btn-outline-secondary">View</a>
+                <button *ngIf="!inCart" type="button" class="btn btn-sm btn-outline-secondary" (click)="addProductToCart(product)">Add to Cart</button>
+                <button *ngIf="inCart" type="button" class="btn btn-sm btn-outline-secondary" (click)="decQuantity(product)">-</button>
+                <button *ngIf="inCart" type="button" class="btn btn-sm btn-outline-secondary" (click)="incQuantity(product)">+</button>
+            </div>
+            <small class="text-muted">{{ product.price | currency:"$" }}</small>
+        </div>
+    </div>
+</div>

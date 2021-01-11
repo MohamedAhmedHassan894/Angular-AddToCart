@@ -1,0 +1,14 @@
+<form class="mt-4 mb-4">
+    <input #sc (keyup)="filterProducts(sc.value)" class="form-control mr-sm-2" type="search" placeholder="Type Product Name" aria-label="Search">
+</form>
+
+<p class="display-4 mb-4">
+    Products
+</p>
+<div class="row">
+
+    <div class="col-md-3 col-3" *ngFor="let product of products">
+        <app-product-item [product]="product"></app-product-item>
+    </div>
+
+</div>

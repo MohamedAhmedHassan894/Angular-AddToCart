@@ -1,0 +1,15 @@
+<div style="text-align: center;">
+    <h2 class="mt-5 mb-4">Product Details</h2>
+</div>
+<div style="text-align: center;">
+
+    <div *ngIf="product">
+        <img src="{{ product.image }}" style="width: 200px;margin-bottom: 10px;">
+        <!-- </center> -->
+        <!-- <center> -->
+        <h3>Title: {{ product.title }}</h3>
+        <!-- </center> -->
+        <h4 style="color: blue;font-family: Verdana, Geneva, Tahoma, sans-serif;">Price: {{ product.price | currency:"$" }}</h4>
+        <p style="color: cadetblue;font-family: cursive;">Description: {{ product.description }}</p>
+    </div>
+</div>

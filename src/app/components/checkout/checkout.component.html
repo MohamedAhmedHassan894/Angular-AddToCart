@@ -1,0 +1,59 @@
+<div *ngIf="!submitted">
+    <p class="display-4 mb-4 mt-5" style="text-align: center;font-style: italic;">
+        Checkout Page
+    </p>
+    <div class="row">
+        <table class="table badge-light">
+            <thead style="background-color:rgba(255, 99, 71, 0.466);color: black;font-weight: bold;">
+                <tr>
+                    <td>photo</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tr *ngFor="let product of items; let i = index">
+                <td><img class="align-self-center" src="{{ product.image }}" style="width: 75px;"></td>
+                <td>
+                    <h5 class="mt-0 mb-4" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">{{ product.title }}</h5>
+                    {{ product.description }}</td>
+                <td>{{ product.price | currency:"$" }}</td>
+                <td><button style="margin-bottom: 8px;background-color:turquoise;color: white;" type="button" class="btn btn-sm btn-outline-secondary" (click)="decQuantity(product)">-</button> {{ product.quantity }} <button type="button" style="margin-bottom: 8px;background-color:turquoise;color: white;"
+                        class="btn btn-sm btn-outline-secondary" (click)="incQuantity(product)">+</button></td>
+                <td>{{ product.price * product.quantity }}</td>
+                <td><button type="button" class="btn btn-sm btn-outline-danger" (click)="removeFromCart(i)">Remove</button></td>
+            </tr>
+            <tr>
+                <td colspan="4" style="color: tomato;font-size: 20px;font-weight: bold;">Total</td>
+                <td colspan="2">
+                    <p class="alert alert-primary">{{ checkoutTotal | currency:"$" }}</p>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="row" style="color:blueviolet;display: inline;">
+        <form>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input id="name" type="text" formControlName="phone" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="name" type="text" formControlName="email" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input id="address" type="text" formControlName="address" class="form-control" required />
+            </div>
+            <div style="text-align: center;">
+                <button class="button" type="submit" class="btn btn-primary mb-5" (click)="submitCheckout()">Complete Order</button></div>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="submitted" class="mt-5">
+    <p class="alert alert-success">Your Order is added</p>
+</div>
